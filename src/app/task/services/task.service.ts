@@ -28,7 +28,11 @@ export class TaskService {
   updateTask(task: Task){
     const taskRef = doc(this.fireStore, `tasks/${task.id}`);
     return updateDoc(taskRef, { done: task.done }); // Solo actualiza "done"
-    // return updateDoc(taskRef, { ...task });  Actualiza todos los campos de la tarea
+  }
+
+  updateAllTask(task: Task){
+    const taskRef = doc(this.fireStore, `tasks/${task.id}`);
+    return updateDoc(taskRef, { ...task }); // Actualiza todos los campos de la tarea
   }
 
   

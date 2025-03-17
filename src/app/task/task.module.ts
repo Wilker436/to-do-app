@@ -6,6 +6,7 @@ import { TaskItemComponent } from './components/task-item/task-item.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     ReactiveFormsModule,
     IonicModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   exports: [
     TaskFormComponent,

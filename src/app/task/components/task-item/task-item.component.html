@@ -2,22 +2,31 @@
   <ion-grid> 
     <ion-row class="ion-justify-content-center ion-align-items-center">
       <ion-col size-lg="12" size-md="12" size-sm="8" size="12" class="s1s">
+        
         <ion-button fill="clear" color="danger" (click)="deleteTask(task)">
           <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+
+        <ion-button fill="clear" (click)="toggleEdit()">
+          <ion-icon *ngIf="!isEditing" name="create-outline"></ion-icon>
+          <ion-icon *ngIf="isEditing" name="checkmark-outline"></ion-icon>
         </ion-button>
         
         <div class="info-content">
           <ion-card-header>
-            <ion-card-title> {{task.title}}</ion-card-title>
+            <ion-card-title *ngIf="!isEditing">{{ task.title }}</ion-card-title>
+            <ion-input *ngIf="isEditing" [(ngModel)]="editableTask.title"></ion-input>
           </ion-card-header>
+
           <ion-card-content>
-            <p class="description"> {{task.description}}</p>
-            <p>Fecha: {{task.date}}</p>
+            <p class="description" *ngIf="!isEditing">{{ task.description }}</p>
+            <ion-textarea *ngIf="isEditing" [(ngModel)]="editableTask.description"></ion-textarea>
+
+            <p *ngIf="!isEditing">Fecha: {{ task.date | date:'medium' }}</p>
+            <ion-datetime *ngIf="isEditing" [(ngModel)]="editableTask.date" displayFormat="YYYY-MM-DD"></ion-datetime>
 
             <p>Estado: <span>{{ toggleStatus }}</span></p>
-            <ion-toggle aria-label="Enable Notifications" (ionChange)="onToggleChange($event, task)" [checked]="task.done" ></ion-toggle>
-
-
+            <ion-toggle aria-label="Enable Notifications" (ionChange)="onToggleChange($event, task)" [checked]="task.done"></ion-toggle>
           </ion-card-content>
         </div>
       </ion-col>

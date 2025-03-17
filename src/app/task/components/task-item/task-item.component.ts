@@ -11,29 +11,35 @@ import { ToastController } from '@ionic/angular';
 })
 export class TaskItemComponent  implements OnInit {
 
-  @Input() task!: Task; 
-  
-  toggleStatus: string = 'Por hacer';
-
-  async onToggleChange(event: any, task: Task) {
-    if (!task) return;
-  
-    task.done = event.detail.checked;
-  
-    await this.updateTask(task);
-  }
-  
-  
-
   constructor(
     private taskService: TaskService,
     private toastController: ToastController
   ) { }
 
+  @Input() task!: Task; 
+  isEditing = false;
+  editableTask!: Task;
+  
+  toggleStatus: string = 'Por hacer';
+
   ngOnInit() {
-    if (this.task) {
+ 
+      this.editableTask = { ...this.task }; 
       this.toggleStatus = this.task.done ? 'Hecha' : 'Por hacer';
+
+  }
+
+  toggleEdit() {
+    if (this.isEditing) {
+      this.updateAllTask(this.editableTask);
     }
+    this.isEditing = !this.isEditing;
+  }
+
+  async onToggleChange(event: any, task: Task) {
+    if (!task) return;
+    task.done = event.detail.checked;
+    await this.updateTask(task);
   }
   
   async deleteTask(task: Task) {
@@ -43,6 +49,11 @@ export class TaskItemComponent  implements OnInit {
   
   async updateTask(task: Task) {
     const response = await this.taskService.updateTask(task);
+    this.presentToast('top', 'Tarea actualizada');
+  }
+
+  async updateAllTask(task: Task) {
+    const response = await this.taskService.updateAllTask(task);
     this.presentToast('top', 'Tarea actualizada');
   }
 
