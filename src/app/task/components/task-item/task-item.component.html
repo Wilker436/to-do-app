@@ -1,0 +1,26 @@
+<ion-card>
+  <ion-grid> 
+    <ion-row class="ion-justify-content-center ion-align-items-center">
+      <ion-col size-lg="12" size-md="12" size-sm="8" size="12" class="s1s">
+        <ion-button fill="clear" color="danger" (click)="deleteTask(task)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+        
+        <div class="info-content">
+          <ion-card-header>
+            <ion-card-title> {{task.title}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="description"> {{task.description}}</p>
+            <p>Fecha: {{task.date}}</p>
+
+            <p>Estado: <span>{{ toggleStatus }}</span></p>
+            <ion-toggle aria-label="Enable Notifications" (ionChange)="onToggleChange($event, task)" [checked]="task.done" ></ion-toggle>
+
+
+          </ion-card-content>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>

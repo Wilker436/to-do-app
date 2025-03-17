@@ -1,0 +1,27 @@
+ion-content {
+    --background: #fffde7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.formContainer {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-content {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+@media (max-width: 1280px){
+    .card-content {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}

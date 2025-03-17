@@ -1,0 +1,29 @@
+ion-header {
+    background: linear-gradient(135deg, #8B4513, #A0522D); 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); 
+    border-bottom: 2px solid #654321; 
+  }
+  
+  ion-toolbar {
+    --background: transparent; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0 16px; 
+  }
+  
+  ion-title {
+    font-family: 'Georgia', serif; 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    color: #FFF; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  ion-icon {
+    font-size: 1.5rem;
+    color: #FFD700; 
+    margin-left: 8px; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
+  }
+  

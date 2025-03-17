@@ -1,0 +1,37 @@
+ion-textarea{
+    height: 200px;
+}
+
+  ion-label {
+    z-index: 9999; /* Coloca el label por encima */
+  }
+
+.form{
+    --background: #fffde7;
+}
+
+ion-item{
+    --background: #fffac7;
+}
+
+.error-message {
+    background-color: #f44336; 
+    color: #fff; 
+    font-size: 16px; 
+    font-family: 'Arial', sans-serif; 
+    padding: 15px 20px; 
+    border: 2px solid #d32f2f; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+    text-align: center;
+    animation: shake 0.5s ease-in-out; 
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+}

@@ -1,0 +1,39 @@
+<h1>Agregar Tareas</h1>
+
+<form [formGroup]="taskForm" (ngSubmit)="submit()">
+  <!-- Campo Título -->
+  <ion-item>
+    <ion-label position="floating" for="title">Título:</ion-label>
+    <ion-input id="title" type="text" formControlName="title"  class="form"></ion-input>
+  </ion-item>
+  <div *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched" class="error-message">
+    <span *ngIf="taskForm.get('title')?.errors?.['required']">El título es obligatorio.</span>
+    <span *ngIf="taskForm.get('title')?.errors?.['minlength']">Mínimo 3 caracteres.</span>
+  </div>
+
+  <!-- Campo Descripción -->
+  <ion-item>
+    <ion-label position="floating" for="description">Descripción:</ion-label>
+    <ion-textarea id="description" formControlName="description"  class="form"></ion-textarea>
+  </ion-item>
+  <div *ngIf="taskForm.get('description')?.invalid && taskForm.get('description')?.touched" class="error-message">
+    <span *ngIf="taskForm.get('description')?.errors?.['required']">La descripción es obligatoria.</span>
+  </div>
+
+  <!-- Campo Fecha -->
+  <ion-item>
+    <ion-label position="floating">Fecha:</ion-label>
+    <ion-datetime formControlName="date" display-format="DD/MM/YYYY" [min]="minDate"  class="form"></ion-datetime>
+  </ion-item>
+  
+  <div *ngIf="taskForm.get('date')?.invalid && taskForm.get('date')?.touched" class="error-message">
+    <span *ngIf="taskForm.get('date')?.errors?.['required']">La fecha es obligatoria.</span>
+    <span *ngIf="taskForm.get('date')?.errors?.['pastDate']">La fecha no puede ser anterior a hoy.</span>
+  </div>
+  
+  
+
+  <app-button type="submit" [disabled]="taskForm.invalid" text="Guardar Tarea"/>
+
+
+</form>

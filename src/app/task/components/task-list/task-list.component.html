@@ -1,0 +1,14 @@
+<ion-grid>
+  <div class="wood-background">
+    <ion-row class="title-row">
+      <h1 class="title">Lista de tareas</h1>
+    </ion-row>
+    <ion-row class="card-content">
+     
+      <ion-col *ngFor="let task of tasks" size-lg="4" size-md="6" size-sm="12" size="12">
+        <app-task-item [task]="task"></app-task-item>
+      </ion-col>
+
+    </ion-row>
+  </div>
+</ion-grid>
